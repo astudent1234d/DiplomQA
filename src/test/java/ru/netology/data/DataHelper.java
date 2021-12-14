@@ -2,6 +2,7 @@ package ru.netology.data;
 
 import com.github.javafaker.Faker;
 
+import java.util.Calendar;
 import java.util.Locale;
 
 public class DataHelper {
@@ -31,7 +32,7 @@ public class DataHelper {
     }
 
     public static String getCardNumberEmpty() {
-        return "                   ";
+        return "";
     }
 
     public static String getValidMonth() {
@@ -43,7 +44,7 @@ public class DataHelper {
     }
 
     public static String getEmptyMonth() {
-        return "  ";
+        return "";
     }
 
     public static String getZeroMonth() {
@@ -59,19 +60,19 @@ public class DataHelper {
     }
 
     public static String getEmptyYear() {
-        return "  ";
+        return "";
     }
 
     public static String getValidOwner() {
-        return faker.name().fullName();
+        return faker.name().firstName() + " " + faker.name().lastName().replaceAll("[^A-Za-z]", "");
     }
 
     public static String getInvalidOwner() {
-        return "Роман#*?%731";
+        return "Jhon#*?%731";
     }
 
     public static String getEmptyOwner() {
-        return "  ";
+        return "";
     }
 
     public static String getValidCvс() {
@@ -83,6 +84,22 @@ public class DataHelper {
     }
 
     public static String getEmptyCvс() {
-        return "  ";
+        return "";
+    }
+
+    public static String getInvalidYearMoreThanFive() {
+        return "27";
+    }
+
+    public static String getInvalidOwnerRus() {
+        return "Василий Петров";
+    }
+
+    public static String getPastMonth() {
+        return "11";
+    }
+
+    public static String getThisYear() {
+        return "21";
     }
 }
