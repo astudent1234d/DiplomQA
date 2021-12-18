@@ -31,8 +31,9 @@ public class DataBaseHelper {
                 return null;
             }
         } catch (SQLException exception) {
-            throw new RuntimeException(exception);
+            exception.printStackTrace();
         }
+        return null;
     }
 
     public static String getStatusPaymentWithCredit() {
@@ -51,8 +52,9 @@ public class DataBaseHelper {
                 return null;
             }
         } catch (SQLException exception) {
-            throw new RuntimeException(exception);
+            exception.printStackTrace();
         }
+        return null;
     }
 
     public static void cleanDataBase() {
@@ -73,7 +75,7 @@ public class DataBaseHelper {
             prepareStatOrder.executeUpdate(orders);
 
         } catch (SQLException exception) {
-            throw new RuntimeException(exception);
+            exception.printStackTrace();
         }
     }
 }

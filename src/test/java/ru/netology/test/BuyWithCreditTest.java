@@ -16,15 +16,14 @@ import static com.codeborne.selenide.Selenide.open;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class BuyWithCreditTest {
-    MainPage mainPage = new MainPage();
-    PaymentPage paymentPage = new PaymentPage();
+    MainPage mainPage;
+    PaymentPage paymentPage;
 
     @BeforeEach
     void shouldCleanDataBaseAndOpenWeb() {
         DataBaseHelper.cleanDataBase();
-        open("http://localhost:8080", MainPage.class);
-        mainPage.buyWithCredit();
-
+        mainPage = open("http://localhost:8080", MainPage.class);
+        paymentPage = mainPage.buyWithCredit();
     }
 
     @BeforeAll
@@ -212,6 +211,17 @@ public class BuyWithCreditTest {
     void shouldRejectPastMonth() {
         val cardNumber = DataHelper.getFirstCardNumber();
         val month = DataHelper.getPastMonth();
+        val year = DataHelper.getThisYear();
+        val owner = DataHelper.getValidOwner();
+        val cvс = DataHelper.getValidCvс();
+        paymentPage.fillOutFields(cardNumber, month, year, owner, cvс);
+        paymentPage.waitInvalidDuration();
+    }
+
+    @Test
+    void shouldRejectZeroMonthOnThisYear() {
+        val cardNumber = DataHelper.getFirstCardNumber();
+        val month = DataHelper.getZeroMonth();
         val year = DataHelper.getThisYear();
         val owner = DataHelper.getValidOwner();
         val cvс = DataHelper.getValidCvс();

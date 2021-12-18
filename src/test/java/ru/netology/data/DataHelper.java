@@ -2,7 +2,8 @@ package ru.netology.data;
 
 import com.github.javafaker.Faker;
 
-import java.util.Calendar;
+import java.time.LocalDate;
+import java.time.Year;
 import java.util.Locale;
 
 public class DataHelper {
@@ -36,11 +37,12 @@ public class DataHelper {
     }
 
     public static String getValidMonth() {
-        return "07";
+        LocalDate localDate = LocalDate.now();
+        return  String.format("%02d", localDate.getMonthValue());
     }
 
     public static String getInvalidMonth() {
-        return "14";
+        return  "14";
     }
 
     public static String getEmptyMonth() {
@@ -52,11 +54,13 @@ public class DataHelper {
     }
 
     public static String getValidYear() {
-        return "23";
+        LocalDate localDate = LocalDate.now();
+        return String.format("%ty", localDate.plusYears(2));
     }
 
     public static String getInvalidYear() {
-        return "20";
+        LocalDate localDate = LocalDate.now();
+        return String.format("%ty", localDate.minusYears(2));
     }
 
     public static String getEmptyYear() {
@@ -76,11 +80,11 @@ public class DataHelper {
     }
 
     public static String getValidCvс() {
-        return "123";
+        return faker.numerify("###");
     }
 
     public static String getInvalidCvс() {
-        return "12";
+        return faker.numerify("##");
     }
 
     public static String getEmptyCvс() {
@@ -88,18 +92,21 @@ public class DataHelper {
     }
 
     public static String getInvalidYearMoreThanFive() {
-        return "27";
+        LocalDate localDate = LocalDate.now();
+        return String.format("%ty", localDate.plusYears(6));
     }
 
     public static String getInvalidOwnerRus() {
-        return "Василий Петров";
+        Faker faker = new Faker(new Locale("ru"));
+        return faker.name().fullName();
     }
 
     public static String getPastMonth() {
-        return "11";
+        LocalDate localDate = LocalDate.now().minusMonths(1);
+        return  String.format("%02d", localDate.getMonthValue());
     }
 
     public static String getThisYear() {
-        return "21";
+        return String.format("%ty", Year.now());
     }
 }
