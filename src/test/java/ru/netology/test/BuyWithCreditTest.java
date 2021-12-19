@@ -9,21 +9,21 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import ru.netology.data.DataBaseHelper;
 import ru.netology.data.DataHelper;
+import ru.netology.page.CreditPage;
 import ru.netology.page.MainPage;
-import ru.netology.page.PaymentPage;
 
 import static com.codeborne.selenide.Selenide.open;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class BuyWithCreditTest {
     MainPage mainPage;
-    PaymentPage paymentPage;
+    CreditPage creditPage;
 
     @BeforeEach
     void shouldCleanDataBaseAndOpenWeb() {
         DataBaseHelper.cleanDataBase();
         mainPage = open("http://localhost:8080", MainPage.class);
-        paymentPage = mainPage.buyWithCredit();
+        creditPage = mainPage.buyWithCredit();
     }
 
     @BeforeAll
@@ -43,8 +43,8 @@ public class BuyWithCreditTest {
         val year = DataHelper.getValidYear();
         val owner = DataHelper.getValidOwner();
         val cvс = DataHelper.getValidCvс();
-        paymentPage.fillOutFields(cardNumber, month, year, owner, cvс);
-        paymentPage.expectApprovalFromBank();
+        creditPage.fillOutFields(cardNumber, month, year, owner, cvс);
+        creditPage.expectApprovalFromBank();
         val expected = DataHelper.getFirstCardExpectedStatus();
         val actual = DataBaseHelper.getStatusPaymentWithCredit();
         assertEquals(expected, actual);
@@ -57,8 +57,8 @@ public class BuyWithCreditTest {
         val year = DataHelper.getValidYear();
         val owner = DataHelper.getValidOwner();
         val cvс = DataHelper.getValidCvс();
-        paymentPage.fillOutFields(cardNumber, month, year, owner, cvс);
-        paymentPage.expectRejectionFromBank();
+        creditPage.fillOutFields(cardNumber, month, year, owner, cvс);
+        creditPage.expectRejectionFromBank();
         val expected = DataHelper.getSecondCardExpectedStatus();
         val actual = DataBaseHelper.getStatusPaymentWithCredit();
         assertEquals(expected, actual);
@@ -71,8 +71,8 @@ public class BuyWithCreditTest {
         val year = DataHelper.getValidYear();
         val owner = DataHelper.getValidOwner();
         val cvс = DataHelper.getValidCvс();
-        paymentPage.fillOutFields(cardNumber, month, year, owner, cvс);
-        paymentPage.expectRejectionFromBank();
+        creditPage.fillOutFields(cardNumber, month, year, owner, cvс);
+        creditPage.expectRejectionFromBank();
     }
 
     @Test
@@ -82,8 +82,8 @@ public class BuyWithCreditTest {
         val year = DataHelper.getValidYear();
         val owner = DataHelper.getValidOwner();
         val cvс = DataHelper.getValidCvс();
-        paymentPage.fillOutFields(cardNumber, month, year, owner, cvс);
-        paymentPage.waitInvalidFormat();
+        creditPage.fillOutFields(cardNumber, month, year, owner, cvс);
+        creditPage.waitInvalidFormat();
     }
 
     @Test
@@ -93,8 +93,8 @@ public class BuyWithCreditTest {
         val year = DataHelper.getValidYear();
         val owner = DataHelper.getValidOwner();
         val cvс = DataHelper.getValidCvс();
-        paymentPage.fillOutFields(cardNumber, month, year, owner, cvс);
-        paymentPage.waitInvalidFormat();
+        creditPage.fillOutFields(cardNumber, month, year, owner, cvс);
+        creditPage.waitInvalidFormat();
     }
 
     @Test
@@ -104,8 +104,8 @@ public class BuyWithCreditTest {
         val year = DataHelper.getValidYear();
         val owner = DataHelper.getValidOwner();
         val cvс = DataHelper.getValidCvс();
-        paymentPage.fillOutFields(cardNumber, month, year, owner, cvс);
-        paymentPage.waitInvalidDuration();
+        creditPage.fillOutFields(cardNumber, month, year, owner, cvс);
+        creditPage.waitInvalidDuration();
     }
 
     @Test
@@ -115,8 +115,8 @@ public class BuyWithCreditTest {
         val year = DataHelper.getValidYear();
         val owner = DataHelper.getValidOwner();
         val cvс = DataHelper.getValidCvс();
-        paymentPage.fillOutFields(cardNumber, month, year, owner, cvс);
-        paymentPage.waitInvalidDuration();
+        creditPage.fillOutFields(cardNumber, month, year, owner, cvс);
+        creditPage.waitInvalidDuration();
     }
 
     @Test
@@ -126,8 +126,8 @@ public class BuyWithCreditTest {
         val year = DataHelper.getEmptyYear();
         val owner = DataHelper.getValidOwner();
         val cvс = DataHelper.getValidCvс();
-        paymentPage.fillOutFields(cardNumber, month, year, owner, cvс);
-        paymentPage.waitInvalidFormat();
+        creditPage.fillOutFields(cardNumber, month, year, owner, cvс);
+        creditPage.waitInvalidFormat();
     }
 
     @Test
@@ -137,8 +137,8 @@ public class BuyWithCreditTest {
         val year = DataHelper.getInvalidYear();
         val owner = DataHelper.getValidOwner();
         val cvс = DataHelper.getValidCvс();
-        paymentPage.fillOutFields(cardNumber, month, year, owner, cvс);
-        paymentPage.waitInvalidYear();
+        creditPage.fillOutFields(cardNumber, month, year, owner, cvс);
+        creditPage.waitInvalidYear();
     }
 
     @Test
@@ -148,8 +148,8 @@ public class BuyWithCreditTest {
         val year = DataHelper.getValidYear();
         val owner = DataHelper.getEmptyOwner();
         val cvс = DataHelper.getValidCvс();
-        paymentPage.fillOutFields(cardNumber, month, year, owner, cvс);
-        paymentPage.waitNecessaryFillOutField();
+        creditPage.fillOutFields(cardNumber, month, year, owner, cvс);
+        creditPage.waitNecessaryFillOutField();
     }
 
     @Test
@@ -159,8 +159,8 @@ public class BuyWithCreditTest {
         val year = DataHelper.getValidYear();
         val owner = DataHelper.getInvalidOwner();
         val cvс = DataHelper.getValidCvс();
-        paymentPage.fillOutFields(cardNumber, month, year, owner, cvс);
-        paymentPage.waitInvalidFormat();
+        creditPage.fillOutFields(cardNumber, month, year, owner, cvс);
+        creditPage.waitInvalidFormat();
     }
 
     @Test
@@ -170,8 +170,8 @@ public class BuyWithCreditTest {
         val year = DataHelper.getValidYear();
         val owner = DataHelper.getValidOwner();
         val cvс = DataHelper.getEmptyCvс();
-        paymentPage.fillOutFields(cardNumber, month, year, owner, cvс);
-        paymentPage.waitInvalidFormat();
+        creditPage.fillOutFields(cardNumber, month, year, owner, cvс);
+        creditPage.waitInvalidFormat();
     }
 
     @Test
@@ -181,8 +181,8 @@ public class BuyWithCreditTest {
         val year = DataHelper.getValidYear();
         val owner = DataHelper.getValidOwner();
         val cvс = DataHelper.getInvalidCvс();
-        paymentPage.fillOutFields(cardNumber, month, year, owner, cvс);
-        paymentPage.waitInvalidFormat();
+        creditPage.fillOutFields(cardNumber, month, year, owner, cvс);
+        creditPage.waitInvalidFormat();
     }
 
     @Test
@@ -192,8 +192,8 @@ public class BuyWithCreditTest {
         val year = DataHelper.getInvalidYearMoreThanFive();
         val owner = DataHelper.getValidOwner();
         val cvс = DataHelper.getValidCvс();
-        paymentPage.fillOutFields(cardNumber, month, year, owner, cvс);
-        paymentPage.waitInvalidDuration();
+        creditPage.fillOutFields(cardNumber, month, year, owner, cvс);
+        creditPage.waitInvalidDuration();
     }
 
     @Test
@@ -203,8 +203,8 @@ public class BuyWithCreditTest {
         val year = DataHelper.getValidYear();
         val owner = DataHelper.getInvalidOwnerRus();
         val cvс = DataHelper.getValidCvс();
-        paymentPage.fillOutFields(cardNumber, month, year, owner, cvс);
-        paymentPage.waitInvalidFormat();
+        creditPage.fillOutFields(cardNumber, month, year, owner, cvс);
+        creditPage.waitInvalidFormat();
     }
 
     @Test
@@ -214,8 +214,8 @@ public class BuyWithCreditTest {
         val year = DataHelper.getThisYear();
         val owner = DataHelper.getValidOwner();
         val cvс = DataHelper.getValidCvс();
-        paymentPage.fillOutFields(cardNumber, month, year, owner, cvс);
-        paymentPage.waitInvalidDuration();
+        creditPage.fillOutFields(cardNumber, month, year, owner, cvс);
+        creditPage.waitInvalidDuration();
     }
 
     @Test
@@ -225,8 +225,8 @@ public class BuyWithCreditTest {
         val year = DataHelper.getThisYear();
         val owner = DataHelper.getValidOwner();
         val cvс = DataHelper.getValidCvс();
-        paymentPage.fillOutFields(cardNumber, month, year, owner, cvс);
-        paymentPage.waitInvalidDuration();
+        creditPage.fillOutFields(cardNumber, month, year, owner, cvс);
+        creditPage.waitInvalidDuration();
     }
 }
 

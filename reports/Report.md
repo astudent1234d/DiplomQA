@@ -17,7 +17,7 @@
 * [Под сообщением: Ошибка! Банк отказал в проведении операции. Присутствует сообщение: Операция одобрена Банком.](https://github.com/astudent1234d/DiplomQA/issues/1)
 * [Грамматическая ошибка на баннере](https://github.com/astudent1234d/DiplomQA/issues/2)
 * [Сообщение Операция одобрена банком при вводе карты из набора карт представленного для тестирования со статусом "DECLINED"](https://github.com/astudent1234d/DiplomQA/issues/3)
-* [Поле "Владелец" принимает значения состоящее из кириллицыB](https://github.com/astudent1234d/DiplomQA/issues/4)
+* [Поле "Владелец" принимает значения состоящее из кириллицы](https://github.com/astudent1234d/DiplomQA/issues/4)
 * [Поле "Владелец" принимает значение из имени и спец символов](https://github.com/astudent1234d/DiplomQA/issues/5)
 * [Поле Месяц принимает значения 0](https://github.com/astudent1234d/DiplomQA/issues/6)
 ### Вывод и рекомендации:

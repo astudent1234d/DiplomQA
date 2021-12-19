@@ -5,6 +5,7 @@ import com.codeborne.selenide.SelenideElement;
 import java.time.Duration;
 
 import static com.codeborne.selenide.Condition.visible;
+import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selectors.withText;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
@@ -15,7 +16,7 @@ public class PaymentPage {
     private SelenideElement fieldYear = $("[placeholder='22']");
     private SelenideElement fieldOwner = $$("[class='input__control']").get(3);
     private SelenideElement fieldCvc = $("[placeholder='999']");
-    private SelenideElement buttonContinue = $$("[class='button button_view_extra button_size_m button_theme_alfa-on-white']").get(1);
+    private SelenideElement buttonContinue = $(byText("Продолжить"));
 
     private SelenideElement bankApproved = $(withText("Операция одобрена Банком."));
     private SelenideElement bankRefusal = $(withText("Ошибка! Банк отказал в проведении операции."));
