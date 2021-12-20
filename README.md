@@ -1,4 +1,4 @@
-####Итоговая документация
+#### Итоговая документация
 
 1. [План автоматизации тестирования](https://github.com/astudent1234d/DiplomQA/blob/master/reports/Plan.md)
 2. [Отчёт об автоматизации тестирования приложения "Путешествие дня"](https://github.com/astudent1234d/DiplomQA/blob/master/reports/Report.md)
